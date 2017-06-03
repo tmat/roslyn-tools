@@ -38,10 +38,13 @@
     <_VsixPayload Include="$(OutputPath)$(MSBuildProjectName).vsix" />
   </ItemGroup>
   
-  <!-- Copy VS setup components to the VS setup output dir -->
+  <!-- 
+    Copy VS setup components to the VS setup output dir.
+    Executing this task after Pack target makes sure that the VSIX is already signed.
+  -->
   <Target Name="CopyVisualStudioSetupComponents" 
-          AfterTargets="Build" 
-          DependsOnTargets="Build"
+          AfterTargets="Pack"
+          DependsOnTargets="Pack"
           Condition="'$(VisualStudioSetupComponent)' != '' and '$(DesignTimeBuild)' != 'true' and '$(BuildingForLiveUnitTesting)' != 'true'">
     
     <Copy SourceFiles="@(_VsixPayload)" DestinationFolder="$(VisualStudioSetupOutputPath)$(VisualStudioSetupComponent)" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="true" />   
