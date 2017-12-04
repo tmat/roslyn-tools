@@ -41,10 +41,14 @@ namespace NuGetRepack.Tests
             for (int i = 0; i < expectedParts.Length; i++)
             {
                 Assert.Equal(expectedParts[i].name, actualParts[i].name);
-                AssertEx.Equal(expectedParts[i].blob, actualParts[i].blob);
 
                 // all parts of test packages are XML documents, test that they can be loaded:
-                XDocument.Load(new MemoryStream(actualParts[i].blob));
+                var actualXml = XDocument.Load(new MemoryStream(actualParts[i].blob));
+                var expectedXml = XDocument.Load(new MemoryStream(expectedParts[i].blob));
+
+                AssertEx.AreEqual(expectedXml.ToString(), actualXml.ToString());
+
+                AssertEx.Equal(expectedParts[i].blob, actualParts[i].blob);
             }
         }
 
