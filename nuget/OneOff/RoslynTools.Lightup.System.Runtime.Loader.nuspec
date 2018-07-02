@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>RoslynTools.LightUp.System.Runtime.Loader</id>
+    <version>$Version$</version>
+    <title>RoslynTools.LightUp.System.Runtime.Loader</title>
+    <authors>roslyn</authors>
+    <owners>roslyn</owners>
+    <licenseUrl>http://go.microsoft.com/fwlink/?LinkID=821730</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>
+      System.Runtime.Loader that can be dynamically loaded from a library targeting netstandard1.3 as a light-up.
+    </description>
+    <copyright>Copyright © Microsoft</copyright>
+    <tags>System.Runtime.Loader light-up</tags>
+  </metadata>
+  <files>
+    <file src="System.Runtime.Loader.dll" target="ref\netstandard1.3" />
+  </files>
+</package>
